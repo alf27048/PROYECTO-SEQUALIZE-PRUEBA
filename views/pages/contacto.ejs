@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<%- include('../partials/nav') %>
+<div class="contenedor" id="contenido">
+    <h1 class="contacto-h1">Contactate con DF Solin Maderas</h1>
+    <h2 class="contacto-h2">Envianos tus dudas, sugerencias y/o comentarios a través del siguiente formulario.</h2>
+    <form action="enviar.js" class="div-contacto">
+        <label class="form-label">
+            Nombre:
+            <input type="text" required class="form-nombre">
+        </label>
+        <label class="form-label">
+            Email:
+            <input type="email" required class="form-email">
+        </label>
+        <label class="form-label">
+            Teléfono
+            <input type="number" class="form-tel">
+        </label>
+        <label class="form-label">
+            Consulta / Comentarios
+            <textarea placeholder="Escriba aquí su mensaje" class="form-area"></textarea>
+        </label>
+        <input type="button" value="ENVIAR" class="form-boton">
+
+    </form>
+    
+</div>
+</body>
