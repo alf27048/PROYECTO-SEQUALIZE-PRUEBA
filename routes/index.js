@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const api = require('../api');
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Proyecto' });
+router.get('/', async (req, res) => {
+  const product = await api.getProduct();
+  console.log(product);
+
+  //res.render('index', { title: 'Proyecto' });
+  res.send(product); // devuelve un JSON con la informacion
 });
 
 /* GET de Contacto */

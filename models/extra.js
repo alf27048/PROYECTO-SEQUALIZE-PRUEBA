@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         logo: DataTypes.BOOLEAN,
         destapador: DataTypes.BOOLEAN,
-        letra: DataTypes.STRING(50),
+        letra: DataTypes.INTEGER,
         lustre: DataTypes.STRING(50),
         imperm: DataTypes.BOOLEAN
     },
