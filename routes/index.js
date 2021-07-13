@@ -35,5 +35,18 @@ router.get('/producto/:id', async (req, res) => {
   res.render('pages/productos', { produc });  // ahi le envio la info
 });
 
+router.get('/buscar', async (req, res) => {
+// Los datos de la URL vienen en un req.query
+const product = await api.findProducByNombre(req.query.query);
+res.render('index', { title: 'Resultado de búsqueda', product }); //uso el render de la home
+
+//res.send(product);  // me muestra el json con lo que busqué
+
+});
+router.get('/agregar', (req, res) => {
+  res.render('pages/agregar');
+});
+
+
 
 module.exports = router;

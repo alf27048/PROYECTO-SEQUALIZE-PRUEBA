@@ -1,4 +1,6 @@
+const { Op } = require('sequelize');    //traigo la parte de Op que me permite hacer querys avanzadas
 const db = require('../models');
+
 
 const getProduct = async () => {
     const product = await db.producto.findAll({ include: db.extra})
@@ -26,10 +28,25 @@ const getProductById = async (id) => {  //id es el dato que envio en la URL
         return produc;
 }
 
+const findProducByNombre = async (query) => {   //recibo el termino de busqueda que insertó el usuario en el formulario y  lo guardo en query
+    const product =await db.producto.findAll({
+        where: {
+            nombre: {
+                [Op.substring]: query   //[Op.substring]: LIKE = "%dato%"
+            }
+        },
+        include: db.extra
+    }).then(result => {
+        return result;
+    });
+    return product;
+}
+
 
 
 module.exports = {
     getProduct,
     getExtra,
-    getProductById
+    getProductById,
+    findProducByNombre
 }

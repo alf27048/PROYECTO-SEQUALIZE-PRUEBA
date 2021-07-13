@@ -34,7 +34,7 @@ a {
 .nav-lista_item{
    border-left: 0.5px solid rgb(158, 156, 150);
 }
-.nav-lista_item-link{
+.nav-lista_item-link, .nav-item_form {
   
    display: block;
    padding: 10px 15px;
