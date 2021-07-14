@@ -41,6 +41,20 @@ const findProducByNombre = async (query) => {   //recibo el termino de busqueda 
     });
     return product;
 }
+ const addProduct = async (nombre, descripcion, precio, imagen, disponible, extraId) => {
+    // En el create, respetamos los nombres y el orden de las columnas de la tabla producto 
+    const produc = await db.producto.create({
+         nombre,
+         descripcion,
+         precio,
+         imagen,
+         disponible,
+         extraId
+     });
+
+     return produc;
+
+ }
 
 
 
@@ -48,5 +62,6 @@ module.exports = {
     getProduct,
     getExtra,
     getProductById,
-    findProducByNombre
+    findProducByNombre,
+    addProduct
 }

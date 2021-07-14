@@ -154,3 +154,9 @@ a {
   text-align: justify;
 
 }
+.form-agregar {
+  display: grid;
+  gap: 20px;
+  max-width: 400px;
+
+}

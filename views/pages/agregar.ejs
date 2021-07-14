@@ -12,5 +12,41 @@
 <%- include('../partials/nav') %>
 <h1>Agregar producto</h1>
 
+<form action="/agregar_proceso" method="POST" class="form-agregar">
+    <label>
+        Nombre:
+        <input type="text" name="nombre">
+    </label>
+    <label>
+        Descripcion:
+        <input type="text" name="descripcion">
+    </label>
+    <label>
+        Precio:
+        <input type="number" name="precio" min="1">
+    </label>
+    <label>
+        Foto:
+        <input type="text" name="foto">
+    </label>
+    <label>
+        Disponible:
+        <input type="text" name="disponible">
+    </label>
+    <label>
+        Extra:
+        <select name="extra">
+        <% extra.forEach(extras => { %>            
+                <option value="<%= extras.id %>"><%= extras.lustre %></option>
+             
+          <% }) %>
+        </select>
+
+        
+    </label>
+    <input type="submit" value="Agregar producto">
+
+</form>
+
 </body>
 </html>

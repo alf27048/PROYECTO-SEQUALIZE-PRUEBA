@@ -43,9 +43,28 @@ res.render('index', { title: 'Resultado de búsqueda', product }); //uso el rend
 //res.send(product);  // me muestra el json con lo que busqué
 
 });
-router.get('/agregar', (req, res) => {
-  res.render('pages/agregar');
+router.get('/agregar', async (req, res) => {
+  // conseguir el listado de autores y pasarlo al render
+  const extra = await api.getExtra();
+ 
+  res.render('pages/agregar', { extra });
 });
+
+// creamos la ruta atraves del metodo Pos para que se active con el formulario de agregar 
+router.post('/agregar_proceso', async (req, res) => {
+ // respetar aqui los nombres de los name de los input, nombre de los objetos
+  const { nombre, descripcion, precio, imagen, disponible, extra } = req.body;
+  // es igual a poner "const nombre = req.body.nombre..." 
+  await api.addProduct(nombre, descripcion, precio, imagen, disponible, extra); //lo dejo sin const por que no lo uso
+  const product = await api.getProduct();
+  
+  res.render('index', { title: 'Proyecto', product });
+  // res.send(product); // devuelve un JSON con la informacion
+});
+
+
+  //res.send(produc);   //req.body trae la info del formulario en json
+//});
 
 
 
