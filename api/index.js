@@ -11,7 +11,7 @@ const getProduct = async () => {
     return product;
 }
 const getExtra = async () => {
-    const Extra = await db.extra.findAll()
+    const Extra = await db.extra.findAll({ include: db.producto })
         .then(result => {
             return result;
         });
@@ -56,6 +56,16 @@ const findProducByNombre = async (query) => {   //recibo el termino de busqueda 
 
  }
 
+ const deleteProductById = async (idProducto) => {
+    const product = await db.producto.destroy({
+        where:{
+            id: idProducto
+        }
+    });
+
+    return product;
+}
+
 
 
 module.exports = {
@@ -63,5 +73,6 @@ module.exports = {
     getExtra,
     getProductById,
     findProducByNombre,
-    addProduct
+    addProduct,
+    deleteProductById
 }

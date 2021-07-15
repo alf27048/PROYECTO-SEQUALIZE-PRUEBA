@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otro listado</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<%- include('../partials/nav') %>
+
+<h1>Estas en nuevo listado</h1>
+
+<ul class="lista-cool">
+    <% extra.forEach(extras => { %> 
+        <li>
+            Extra ID: <%= extras.id %> 
+            Lustre: <%= extras.lustre %>
+            <ul>
+              <% produc.forEach(product =>{ %>
+                <% if(product.extraId === extras.id) {%>
+                  <li>
+                    <%= product.nombre %>
+                  </li>
+                <% } %>
+          <% }) %>
+        </ul>
+        </li>
+    <% }) %>
+</ul>
+    
+    
+</body>
+</html>

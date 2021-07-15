@@ -66,6 +66,23 @@ router.post('/agregar_proceso', async (req, res) => {
   //res.send(produc);   //req.body trae la info del formulario en json
 //});
 
+router.get('/otro-listado', async (req, res) => {
+  const extra = await api.getExtra();
+  const produc = await api.getProduct();
+
+  res.render('pages/otro-listado', { extra, produc });
+});
+
+router.get('/eliminar/:id', async (req, res) => {
+  const affectedRows = await api.deleteProductById(req.params.id);
+  if (affectedRows > 0) { //la respuesta de la query es la cantidad de lineas afectadas
+    res.redirect('/');  //si todo salio bien redirijo a la home
+  } else {
+    res.send('Algo salió mal');
+  }
+});
+
+
 
 
 module.exports = router;
